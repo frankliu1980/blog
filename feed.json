@@ -1,0 +1,14 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "On My Way",
+    "description": "",
+    "home_page_url": "https://frankliu1980.github.io/blog",
+    "feed_url": "https://frankliu1980.github.io/blog/feed.json",
+    "user_comment": "",
+    "icon": "https://frankliu1980.github.io/blog/media/website/260817.png",
+    "author": {
+        "name": "Frank Liu"
+    },
+    "items": [
+    ]
+}
