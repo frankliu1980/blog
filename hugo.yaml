@@ -1,8 +1,8 @@
-baseURL = 'https://frankliu1980.github.io/blog'
+baseURL: 'https://frankliu1980.github.io/blog'
 
 languageCode: en-us
 
-title: Frank's tech world
+title: "Frank's tech world"
 
 copyright: © 2026-2027 Frank Liu
 
@@ -12,10 +12,11 @@ pagination:
   pagerSize: 10
   # Specify the number of posts listed at home page
 
-theme: hugo-theme-minima
+theme: minima
 # Specify a theme to use
 
 defaultContentLanguage: en
+defaultContentLanguageInSubdir: true
 # Specify the default language
 
 languages:
@@ -23,10 +24,11 @@ languages:
   en:
     languageName: EN
     weight: 1
-    
-  zh-cn:
+    contentDir: content/en
+  zh:
     languageName: 简中
     weight: 2
+    contentDir: content/zh
     params:
       greet: 你好 :)
       author:
@@ -85,18 +87,18 @@ params:
 
     utterances:
     # See also https://utteranc.es
-      repo: mivinci/hugo-theme-minima
+      repo: frankliu1980/blog
       issueTerm: pathname
       label: comment
 
     giscus: 
     # See also https://giscus.app
-      repo: mivinci/hugo-theme-minima
-      repoId: MDEwOlJlcG9zaXRvcnkzODcxMjM2NDU=
-      category: Comments
-      categoryId: DIC_kwDOFxMJvc4CScQm
+      repo: frankliu1980/blog
+      repoId: R_kgDOU6Uy8w
+      category: Announcements
+      categoryId: DIC_kwDOU6Uy884DHA5Y
       mapping: pathname
-      inputPosition: buttom # bottom | top
+      inputPosition: bottom # bottom | top
       reactions: true
       metadata: false
 

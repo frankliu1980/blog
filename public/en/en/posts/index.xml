@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Posts on Frank&#39;s tech world</title>
+		<link>http://localhost:1313/blog/en/en/posts/</link>
+		<description>Recent content in Posts on Frank&#39;s tech world</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+			<copyright>© 2026-2027 Frank Liu</copyright>
+		
+		
+			<lastBuildDate>Sun, 04 Oct 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/blog/en/en/posts/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Test Post</title>
+				<link>http://localhost:1313/blog/en/en/posts/test-post/</link>
+				<pubDate>Sun, 04 Oct 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/blog/en/en/posts/test-post/</guid>
+				<description>&lt;p&gt;This is a test post to verify Hugo&amp;rsquo;s multilingual, Mermaid, and LaTeX support.&lt;/p&gt;&#xA;&lt;h2 id=&#34;1-mermaid-test&#34;&gt;1. Mermaid Test&lt;/h2&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;graph TD&#xA;    A[Start] --&amp;gt; B{Condition}&#xA;    B --&amp;gt;|Yes| C[Do A]&#xA;    B --&amp;gt;|No| D[Do B]&#xA;    C --&amp;gt; E[End]&#xA;    D --&amp;gt; E&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
+			</item>
+	</channel>
+</rss>
