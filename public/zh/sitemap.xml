@@ -15,6 +15,19 @@
                 href="http://localhost:1313/blog/zh/posts/test-post/"
                 />
   </url><url>
+    <loc>http://localhost:1313/blog/zh/about/</loc>
+    <lastmod>2026-10-04T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="http://localhost:1313/blog/en/about/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://localhost:1313/blog/zh/about/"
+                />
+  </url><url>
     <loc>http://localhost:1313/blog/zh/</loc>
     <lastmod>2026-10-04T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -39,18 +52,6 @@
                 rel="alternate"
                 hreflang="zh"
                 href="http://localhost:1313/blog/zh/posts/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/blog/zh/about/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="http://localhost:1313/blog/en/about/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost:1313/blog/zh/about/"
                 />
   </url><url>
     <loc>http://localhost:1313/blog/zh/categories/</loc>

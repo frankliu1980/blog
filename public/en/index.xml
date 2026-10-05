@@ -9,6 +9,15 @@
     <copyright>© 2026-2027 Frank Liu</copyright>
     <lastBuildDate>Sun, 04 Oct 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/blog/en/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>About</title>
+      <link>http://localhost:1313/blog/en/about/</link>
+      <pubDate>Sun, 04 Oct 2026 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/en/about/</guid>
+      <description>&lt;p&gt;This is the introduction about myself&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Test Post</title>
       <link>http://localhost:1313/blog/en/posts/test-post/</link>
       <pubDate>Sun, 04 Oct 2026 00:00:00 +0000</pubDate>
@@ -23,15 +32,6 @@
     C --&amp;gt; E[End]
     D --&amp;gt; E
 &lt;/code&gt;&lt;/pre&gt;</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://localhost:1313/blog/en/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/blog/en/about/</guid>
-      <description></description>
     </item>
     
   </channel>
