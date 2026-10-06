@@ -47,6 +47,109 @@
 
 
 
+<link rel="stylesheet" href="/blog/css/custom.css">
+
+
+<style>
+  .mermaid {
+    width: 100%;
+    max-width: 100%;
+    height: 500px;
+    overflow: auto;
+    margin: 1.5rem 0;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    background: #fafafa;
+    position: relative;
+    cursor: grab;
+  }
+  .mermaid:active {
+    cursor: grabbing;
+  }
+  .mermaid svg {
+    max-width: none !important;
+    height: auto;
+    display: block;
+  }
+  .mermaid::after {
+    content: "Ctrl/⌘ + 滚轮缩放 · 滚动条平移 · 双击重置";
+    position: absolute;
+    right: 8px;
+    bottom: 6px;
+    font-size: 12px;
+    color: #aaa;
+    pointer-events: none;
+    background: rgba(255,255,255,0.7);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+</style>
+
+
+<script>
+(function () {
+  function init(el) {
+    if (el.__mermaidInit) return;
+    el.__mermaidInit = true;
+
+    var svg = el.querySelector('svg');
+    if (!svg) return;
+
+    
+    var baseWidth = el.clientWidth;
+    svg.style.width = baseWidth + 'px';
+    svg.style.height = 'auto';
+    svg.style.maxWidth = 'none';
+
+    
+    var scale = 1;
+
+    function applyScale() {
+      svg.style.width = (baseWidth * scale) + 'px';
+    }
+
+    
+    el.addEventListener('wheel', function (e) {
+      if (!e.ctrlKey && !e.metaKey) {
+        return;                 
+      }
+      e.preventDefault();
+      scale *= (e.deltaY > 0 ? 0.9 : 1.1);
+      scale = Math.max(0.3, Math.min(5, scale));
+      applyScale();
+      console.log('[mermaid-zoom] scale =', scale.toFixed(2));
+    }, { passive: false });
+
+    
+    el.addEventListener('dblclick', function () {
+      scale = 1;
+      applyScale();
+      el.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    });
+
+    
+    window.addEventListener('resize', function () {
+      baseWidth = el.clientWidth;
+      applyScale();
+    });
+
+    console.log('[mermaid-zoom] initialized, baseWidth =', baseWidth);
+  }
+
+  function scan() {
+    document.querySelectorAll('.mermaid').forEach(init);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', scan);
+  } else {
+    scan();
+  }
+  setTimeout(scan, 300);
+  setTimeout(scan, 1000);
+})();
+</script>
+
 <body>
   <header class="mt-3 mb-8">
   <div class="container mx-auto">
@@ -120,13 +223,63 @@
     <article class="md">
       <p>这是一篇测试文章，用来验证 Hugo 的多语言、Mermaid 和 LaTeX 是否正常工作。</p>
 <h2 id="1-mermaid-测试">1. Mermaid 测试</h2>
-<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph TD
-    A[开始] --&gt; B{判断条件}
-    B --&gt;|是| C[执行 A]
-    B --&gt;|否| D[执行 B]
-    C --&gt; E[结束]
-    D --&gt; E
-</code></pre>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph LR
+    A[用户访问首页] --&gt; B{是否已登录}
+    B --&gt;|否| C[跳转到登录页]
+    B --&gt;|是| D[加载用户配置]
+    C --&gt; E[输入账号密码]
+    E --&gt; F{验证凭据}
+    F --&gt;|失败| G[提示错误信息]
+    G --&gt; E
+    F --&gt;|成功| H[生成会话 Token]
+    H --&gt; D
+    D --&gt; I[拉取文章列表]
+    I --&gt; J{是否有权限}
+    J --&gt;|否| K[显示 403 页面]
+    J --&gt;|是| L[渲染文章内容]
+    L --&gt; M[加载评论组件]
+    M --&gt; N[显示完整页面]
+</code></pre><h2 id="2-latex-行内公式">2. LaTeX 行内公式</h2>
+<p>在文字中嵌入公式，公式与文字同高。在文字中嵌入公式，公式与文字同高。在文字中嵌入公式，公式与文字同高。在文字中嵌入公式，公式与文字同高。在文字中嵌入公式，公式与文字同高。在文字中嵌入公式，公式与文字同高。在文字中嵌入公式，公式与文字同高。在文字中嵌入公式，公式与文字同高。在文字中嵌入公式，公式与文字同高。在文字中嵌入公式，公式与文字同高。在文字中嵌入公式，公式与文字同高。</p>
+<p>质能方程 $E = mc^2$，欧拉恒等式 $e^{i\pi} + 1 = 0$，勾股定理 $a^2 + b^2 = c^2$。</p>
+<p>二次方程求根公式 $x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$，求和公式 $\sum_{i=1}^{n} i = \frac{n(n+1)}{2}$。</p>
+<p>当 $x \to \infty$ 时，函数 $f(x) = \frac{1}{x}$ 趋近于 $0$。</p>
+<h2 id="3-latex-块级公式">3. LaTeX 块级公式</h2>
+<p>块级公式独占一行并居中显示。</p>
+<h3 id="31-高斯积分">3.1 高斯积分</h3>
+<p>$$
+\int_{-\infty}^{\infty} e^{-x^2} , dx = \sqrt{\pi}
+$$</p>
+<h3 id="32-麦克斯韦方程组">3.2 麦克斯韦方程组</h3>
+<p>$$
+\begin{aligned}
+\nabla \cdot \mathbf{E} &amp;= \frac{\rho}{\varepsilon_0} \
+\nabla \cdot \mathbf{B} &amp;= 0 \
+\nabla \times \mathbf{E} &amp;= -\frac{\partial \mathbf{B}}{\partial t} \
+\nabla \times \mathbf{B} &amp;= \mu_0 \mathbf{J} + \mu_0 \varepsilon_0 \frac{\partial \mathbf{E}}{\partial t}
+\end{aligned}
+$$</p>
+<h3 id="33-矩阵">3.3 矩阵</h3>
+<p>$$
+\mathbf{A} = \begin{pmatrix}
+a_{11} &amp; a_{12} &amp; a_{13} \
+a_{21} &amp; a_{22} &amp; a_{23} \
+a_{31} &amp; a_{32} &amp; a_{33}
+\end{pmatrix}
+$$</p>
+<h3 id="34-高斯分布">3.4 高斯分布</h3>
+<p>$$
+\phi(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( -\frac{(x-\mu)^2}{2\sigma^2} \right)
+$$</p>
+<h3 id="35-极限">3.5 极限</h3>
+<p>$$
+\lim_{n \to \infty} \left( 1 + \frac{1}{n} \right)^n = e
+$$</p>
+<h3 id="36-傅里叶变换">3.6 傅里叶变换</h3>
+<p>$$
+\hat{f}(\xi) = \int_{-\infty}^{\infty} f(x) , e^{-2\pi i x \xi} , dx
+$$</p>
+
     </article>
   </main>
   
@@ -163,13 +316,42 @@
 
 
 
-<script 
-  src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"
-  crossorigin="anonymous">
-</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
 <script>
-  mermaid.init(undefined, 'code.language-mermaid')
+  mermaid.initialize({
+      startOnLoad: false,
+      useMaxWidth: false
+  });
+
+  function renderMermaid() {
+    var nodes = document.querySelectorAll('code.language-mermaid');
+    if (nodes.length === 0) return;
+    nodes.forEach(function (codeEl, i) {
+      var code = codeEl.textContent;
+      var id = 'mermaid-' + Date.now() + '-' + i;
+      mermaid.render(id, code).then(function (result) {
+        var wrapper = document.createElement('div');
+        wrapper.className = 'mermaid';
+        wrapper.innerHTML = result.svg;
+        var pre = codeEl.closest('pre');
+        if (pre) {
+          pre.parentNode.replaceChild(wrapper, pre);
+        } else {
+          codeEl.parentNode.replaceChild(wrapper, codeEl);
+        }
+      }).catch(function (err) {
+        console.error('Mermaid render failed:', err);
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderMermaid);
+  } else {
+    renderMermaid();
+  }
 </script>
+
 
 
 

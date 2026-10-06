@@ -16,13 +16,25 @@
       <guid>http://localhost:1313/blog/zh/posts/test-post/</guid>
       <description>&lt;p&gt;这是一篇测试文章，用来验证 Hugo 的多语言、Mermaid 和 LaTeX 是否正常工作。&lt;/p&gt;
 &lt;h2 id=&#34;1-mermaid-测试&#34;&gt;1. Mermaid 测试&lt;/h2&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;graph TD
-    A[开始] --&amp;gt; B{判断条件}
-    B --&amp;gt;|是| C[执行 A]
-    B --&amp;gt;|否| D[执行 B]
-    C --&amp;gt; E[结束]
-    D --&amp;gt; E
-&lt;/code&gt;&lt;/pre&gt;</description>
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;graph LR
+    A[用户访问首页] --&amp;gt; B{是否已登录}
+    B --&amp;gt;|否| C[跳转到登录页]
+    B --&amp;gt;|是| D[加载用户配置]
+    C --&amp;gt; E[输入账号密码]
+    E --&amp;gt; F{验证凭据}
+    F --&amp;gt;|失败| G[提示错误信息]
+    G --&amp;gt; E
+    F --&amp;gt;|成功| H[生成会话 Token]
+    H --&amp;gt; D
+    D --&amp;gt; I[拉取文章列表]
+    I --&amp;gt; J{是否有权限}
+    J --&amp;gt;|否| K[显示 403 页面]
+    J --&amp;gt;|是| L[渲染文章内容]
+    L --&amp;gt; M[加载评论组件]
+    M --&amp;gt; N[显示完整页面]
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;2-latex-行内公式&#34;&gt;2. LaTeX 行内公式&lt;/h2&gt;
+&lt;p&gt;在文字中嵌入公式，公式与文字同高。在文字中嵌入公式，公式与文字同高。在文字中嵌入公式，公式与文字同高。在文字中嵌入公式，公式与文字同高。在文字中嵌入公式，公式与文字同高。在文字中嵌入公式，公式与文字同高。在文字中嵌入公式，公式与文字同高。在文字中嵌入公式，公式与文字同高。在文字中嵌入公式，公式与文字同高。在文字中嵌入公式，公式与文字同高。在文字中嵌入公式，公式与文字同高。&lt;/p&gt;
+&lt;p&gt;质能方程 $E = mc^2$，欧拉恒等式 $e^{i\pi} + 1 = 0$，勾股定理 $a^2 + b^2 = c^2$。&lt;/p&gt;</description>
     </item>
     
     <item>

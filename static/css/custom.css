@@ -1,0 +1,9 @@
+/* 全站内容宽度调整 */
+html body .container {
+  max-width: 960px !important;   /* 可调整为 800px / 900px / 1000px */
+}
+
+/* 覆盖 Minima 主题 CSS 变量（双保险） */
+:root {
+  --max-w: 960px;
+}

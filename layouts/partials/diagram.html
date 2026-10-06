@@ -1,0 +1,37 @@
+{{ if eq .Site.Params.diagram.provider "mermaid" }}
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({
+      startOnLoad: false,
+      useMaxWidth: false
+  });
+
+  function renderMermaid() {
+    var nodes = document.querySelectorAll('code.language-mermaid');
+    if (nodes.length === 0) return;
+    nodes.forEach(function (codeEl, i) {
+      var code = codeEl.textContent;
+      var id = 'mermaid-' + Date.now() + '-' + i;
+      mermaid.render(id, code).then(function (result) {
+        var wrapper = document.createElement('div');
+        wrapper.className = 'mermaid';
+        wrapper.innerHTML = result.svg;
+        var pre = codeEl.closest('pre');
+        if (pre) {
+          pre.parentNode.replaceChild(wrapper, pre);
+        } else {
+          codeEl.parentNode.replaceChild(wrapper, codeEl);
+        }
+      }).catch(function (err) {
+        console.error('Mermaid render failed:', err);
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderMermaid);
+  } else {
+    renderMermaid();
+  }
+</script>
+{{ end }}

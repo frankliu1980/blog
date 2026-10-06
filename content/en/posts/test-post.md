@@ -1,6 +1,7 @@
 ---
 title: "Test Post"
 date: 2026-10-04
+mermaidZoom: true
 draft: false
 math: true
 hasMath: true
